@@ -2,7 +2,7 @@ import React from "react";
 import "./Login.css";
 import { TextField, Button } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
-
+import hands from '../media/iPhone 12 Pro (Wooden Hands).svg'
 import { useDispatch } from "react-redux";
 import { setCredentials } from "../redux/slice/AuthSlice";
 
@@ -77,7 +77,10 @@ const Login = () => {
         <p>Нет аккаунта? Создать бесплатно</p>
       </div>
 
-      <div className="login_right_side"></div>
+      <div className="login_right_side">
+
+        <img style={{ width: 650, height: 650, position: 'absolute', bottom: 0, marginLeft: 'auto', left: '45%' }} src={hands} alt=""></img>
+      </div>
     </div>
   );
 };

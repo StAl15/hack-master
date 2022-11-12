@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import io from 'socket.io-client'
+import events from '../events'
 import constants from '../constants';
 import './Chat.css'
 import TextField from '@mui/material/TextField';
@@ -8,8 +9,8 @@ import Form from '../components/ChatComponents/Form'
 import Messages from '../components/ChatComponents/Messages';
 import UserBar from '../components/ChatComponents/UserBar';
 import OnlineUserBar from '../components/ChatComponents/OnlineUserBar';
-
-
+import send_btn from '../media/back_btn.svg'
+import { IconButton } from '@mui/material';
 
 
 const Chat = () => {
@@ -43,6 +44,11 @@ const Chat = () => {
 
     })
 
+    const chooseUserHandler = ({ id, name, surname, avatar }) => {
+        socket.emit(events.CHOOSE_USER_FROM_CLIENT, { id })
+        setUser({ name, surname, avatar })
+    }
+
     return (
         <div>
             {/* <Link to={"/profile"}>Профиль </Link> */}
@@ -52,15 +58,23 @@ const Chat = () => {
                 <div className='list_subjects'>
                     <div>
                         <img src={user.avatar} alt=""></img>
-                        <div style={{display:'flow-root', alignItems:'start',}}>
+                        <div style={{ display: 'flow-root', alignItems: 'start', }}>
                             <h1>{user.name} {user.surname}</h1>
                             <h3>В сети</h3>
                         </div>
                     </div>
                 </div>
                 <div className='chat_screen'>
-                    <Messages messages={messages} />
-                    <TextField fullWidth style={{ maxWidth: '60vw', position: 'absolute', bottom: '0' }} id="outlined-basic" label="Сообщение" variant="outlined" onChange={(e) => setMessage_input(e.target.value)} />
+
+                    <Messages style={{marginTop:'20px'}} messages={messages} />
+
+                    <div style={{ position: 'absolute', bottom: '0', display: 'flex', width: '60vw' }}>
+                        <TextField fullWidth style={{ borderColor: 'black', maxWidth: '55vw', marginTop: '20px', marginBottom:10, marginLeft:10 }} id="outlined-basic" label="Сообщение" variant="outlined" onChange={(e) => setMessage_input(e.target.value)} />
+                        <IconButton style={{ marginLeft: 'auto', width: 30, height: 30, marginRight: 20, marginTop: 30 }} aria-label="delete">
+                            <img style={{ width: 30, height: 30 }} src={send_btn} alt="btn"></img>
+                        </IconButton>
+                    </div>
+
                 </div>
 
             </div>

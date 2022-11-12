@@ -13,6 +13,7 @@
     height: 100vh;
     background-color: #F0F4F7;
     overflow: auto;
+    display: inline-flex;
 }
 
 .title_signin {

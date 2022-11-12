@@ -3,7 +3,7 @@
     height: 100vh;
     background-color: #F0F4F7;
     overflow: auto;
-    display: flex;
+    display: inline-flex;
 }
 
 .list_subjects div img {
@@ -48,12 +48,16 @@
 
 .list_subjects h3 {
     color: white;
+    font-family: 'Inter-Light';
 }
 
 .chat_screen {
     margin-left: auto;
     width: 60vw;
-    height: 100vh;
+    margin-top: 40px;
+    border-radius: 20px;
+    
+    height: 85%;
     background-color: white;
 
 }
