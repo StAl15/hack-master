@@ -19,24 +19,34 @@
     margin-top: 40px;
     margin-left: 40px;
     width: max-content;
-    height: auto;
+    height: max-content;
 }
 
 .list_subjects div{
     display: flex;
     width: max-content;
-    height: auto;
-    padding: 10px;
+    height: max-content;
+    padding: 2px;
+    padding-left: 15px;
     padding-right: 40px;
     align-items: center;
     background-color: #39B6EC;
     border-radius: 10px;
 }
 
+.list_subjects div div {
+    margin-left: 10px;
+}
+
 .list_subjects h1 {
-    margin-left: 15px;
     font-family: 'Inter-Regular';
     font-size: 25px;
+    color: white;
+    margin-bottom: -10px;
+
+}
+
+.list_subjects h3 {
     color: white;
 }
 

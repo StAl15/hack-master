@@ -52,12 +52,15 @@ const Chat = () => {
                 <div className='list_subjects'>
                     <div>
                         <img src={user.avatar} alt=""></img>
-                        <h1>{user.name} {user.surname}</h1>
+                        <div style={{display:'flow-root', alignItems:'start',}}>
+                            <h1>{user.name} {user.surname}</h1>
+                            <h3>В сети</h3>
+                        </div>
                     </div>
                 </div>
                 <div className='chat_screen'>
                     <Messages messages={messages} />
-                    <TextField fullWidth style={{maxWidth: '60vw',position: 'absolute', bottom: '0'}} id="outlined-basic" label="Сообщение" variant="outlined" onChange={(e) => setMessage_input(e.target.value)} />
+                    <TextField fullWidth style={{ maxWidth: '60vw', position: 'absolute', bottom: '0' }} id="outlined-basic" label="Сообщение" variant="outlined" onChange={(e) => setMessage_input(e.target.value)} />
                 </div>
 
             </div>
