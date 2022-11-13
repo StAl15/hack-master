@@ -4,7 +4,7 @@
 
 .content_card {
     background-color: white;
-    width: max-content;
+    width: 360px;
     height: auto;
     display: grid;
     justify-content: space-between;
@@ -104,6 +104,8 @@
     width: 100px;
     height: 100px;
     margin-right: 20px;
+    border-radius: 100%;
+    border-style: none;
 }
 .main_info_ {
     display: flex;
