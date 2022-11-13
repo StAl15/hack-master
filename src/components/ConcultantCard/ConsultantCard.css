@@ -4,7 +4,7 @@
 
 .content_card {
     background-color: white;
-    width: 360px;
+    width: 380px;
     height: auto;
     display: grid;
     justify-content: space-between;
@@ -25,23 +25,22 @@
 
 }
 
-.round_rating_ h1 {
-    font-size: 25px;
-    margin-left: auto;
-}
-
 .round_rating_ div {
-    width: 50px;
-    height: 50px;
-    border-radius: 100%;
-    border-style: solid;
-    border-color: #39B6EC;
-    align-self: center;
-    padding-bottom: 15px;
-    padding-left: 15px;
+    font-size: 20px;
     margin-left: auto;
+    border-radius: 50%;
+    width: 56px;
+    height: 56px;
+    padding: 13px;
+    border-color: #39B6EC;
+    border-style: solid;
+    text-align: center;
+    font-family: 'Inter-Regular';
+
     
 }
+
+
 
 .round_rating_ h3 {
     font-family: 'Inter-Light';

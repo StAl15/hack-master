@@ -54,7 +54,7 @@ export default function Profile() {
         </div>
         <div className="left_side">
           <div className="round_rating">
-            <h1>A +</h1>
+            <div>A+</div>
             <h4>Индекс доверия</h4>
           </div>
         </div>

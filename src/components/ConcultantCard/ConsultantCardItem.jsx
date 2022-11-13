@@ -20,7 +20,7 @@ const ConsultantCardItem = ({card, name, clients, rating, earning, img_src}) => 
                 <div className="round_rating_">
                     <h3>Индекс доверия</h3>
                     <div>
-                        <h1>A +</h1>
+                        A+
                     </div>
                 </div>
                 <div className="quantity_clients">

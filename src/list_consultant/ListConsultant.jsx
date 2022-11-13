@@ -1,6 +1,7 @@
 import React from 'react';
 import ConsultantCard from '../components/ConcultantCard/ConsultantCard';
 import './ListConsultant.css'
+import { CarouserlWrapper } from 'react-pretty-carousel'
 
 // return <ConsultantCardItem card={card} key={card.id} index={index} name={card.name} clients={card.clients} rating={card.rating} earning={card.earning} img_src={card.img_src} />
 
@@ -33,11 +34,13 @@ const ListConsultant = () => {
     ];
     return (
         <div className='content'>
-            
+
             <div className='list_consultants'>
                 {cards.length ? <ConsultantCard cards={cards} /> : <p>Увы, экспертов нет</p>}
-
                 
+                
+
+
             </div>
         </div>
     );
