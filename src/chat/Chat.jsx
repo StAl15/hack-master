@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import io from 'socket.io-client'
-import events from '../events'
-import constants from '../constants';
+import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
 import './Chat.css'
 import TextField from '@mui/material/TextField';
 import Form from '../components/ChatComponents/Form'
@@ -14,14 +13,38 @@ import { IconButton } from '@mui/material';
 
 
 const Chat = () => {
-    const socket = io.connect(constants.SOCKET_URL)
+    const profile = useSelector((state) => state.auth);
+    const [loading, setLoading] = useState(false);
+    const [currentDialog, setCurrentDialog] = useState('');
+    const config = {
+        headers: { Authorization: `Bearer ${profile.token}` },
+      };
+    useEffect(() => {
+      const fetchData = async () => {
+        const { data } = await axios.get(`https://hack.invest-open.ru/chat/dialog`, config);
+        setCurrentDialog(data.dialogId)
+        const msgs = await axios.get(`https://hack.invest-open.ru/chat/history?dialogId=${currentDialog}`, config);
+        setMessages(msgs.data.messages)
+        console.log(msgs.data.messages)
+        setLoading(true)
+      }
+      fetchData();
+    }, [loading]);
 
     const [message_input, setMessage_input] = useState("")
 
-    const sendMessage = (text_, name_) => {
-        setMessages(messages.push({ text: { text_ }, name: { name_ } }))
+    const onMessageSend = async () => {
+        const bodyParameters = {
+            "message": {
+                "dialogId": currentDialog,
+                "text": message_input,
+                "messageType": "TEXT",
+            }
+        }
+        const { data } = await axios.post(`https://hack.invest-open.ru/message/send`, bodyParameters, config);
+        setMessage_input('')
+        setLoading(false)
     }
-
 
     const [messages, setMessages] = useState([
         {
@@ -44,16 +67,10 @@ const Chat = () => {
 
     })
 
-    const chooseUserHandler = ({ id, name, surname, avatar }) => {
-        socket.emit(events.CHOOSE_USER_FROM_CLIENT, { id })
-        setUser({ name, surname, avatar })
-    }
+ 
 
     return (
         <div>
-            {/* <Link to={"/profile"}>Профиль </Link> */}
-
-            {/* <Form /> */}
             <div className='content'>
                 <div className='list_subjects'>
                     <div>
@@ -65,23 +82,15 @@ const Chat = () => {
                     </div>
                 </div>
                 <div className='chat_screen'>
-
                     <Messages style={{marginTop:'20px'}} messages={messages} />
-
                     <div style={{ position: 'absolute', bottom: '0', display: 'flex', width: '60vw' }}>
-                        <TextField fullWidth style={{ borderColor: 'black', maxWidth: '55vw', marginTop: '20px', marginBottom:10, marginLeft:10 }} id="outlined-basic" label="Сообщение" variant="outlined" onChange={(e) => setMessage_input(e.target.value)} />
-                        <IconButton style={{ marginLeft: 'auto', width: 30, height: 30, marginRight: 20, marginTop: 30 }} aria-label="delete">
+                        <TextField fullWidth style={{ borderColor: 'black', maxWidth: '55vw', marginTop: '20px', marginBottom:10, marginLeft:10 }} value={message_input} id="outlined-basic" label="Сообщение" variant="outlined" onChange={(e) => setMessage_input(e.target.value)} />
+                        <IconButton onClick={()=>onMessageSend()} style={{ marginLeft: 'auto', width: 30, height: 30, marginRight: 20, marginTop: 30 }} aria-label="delete">
                             <img style={{ width: 30, height: 30 }} src={send_btn} alt="btn"></img>
                         </IconButton>
                     </div>
-
                 </div>
-
             </div>
-
-            {/* <OnlineUserBar />
-            <UserBar /> */}
-
         </div>
     );
 };
