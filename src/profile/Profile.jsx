@@ -1,30 +1,30 @@
 import "./Profile.css";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
-import { logOut } from "../redux/slice/AuthSlice";
+import { additionalInfo, logOut } from "../redux/slice/AuthSlice";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 export default function Profile() {
   const profile = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  console.log(profile);
+  const [loading, setLoading] = useState(false);
 
 
+useEffect(() => {
+  const config = {
+    headers: { Authorization: `Bearer ${profile.token}` },
+  };
+  const fetchData = async () => {
+    const { data } = await axios.get(`https://hack.invest-open.ru/user/info?userId=${profile.id}`, config);
+    dispatch(additionalInfo(data));
+    setLoading(true)
+  }
+  fetchData();
+}, [setLoading]);
 
-//   const handlesumbit = async () => {
-
-//     try {
-//       const userData = await axios.get(`https://hack.invest-open.ru/user/info?userId=${profile.id}`, bodyParameters)
-//       dispatch(setCredentials(userData.data));
-//       setUser("");
-//       setPassword("");
-//       navigate("/chat");
-//     } catch (error) {
-//       console.log(error);
-//     }
-//   };
   return (
     <div className="profile_content">
       <div className="main_info">
@@ -33,8 +33,8 @@ export default function Profile() {
           alt="image"
         ></img>
         <div>
-          {profile.role && <h4>Консультант</h4>}
-          <h1>Маслов Евгений Анатольевич</h1>
+          {profile.role === "OPERATOR" && <h4>Консультант</h4>}
+          <h1>{profile.name} {profile.middleName} {profile.surname}</h1>
         </div>
       </div>
       <div className="additive_info">
