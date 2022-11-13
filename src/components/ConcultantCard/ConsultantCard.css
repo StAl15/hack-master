@@ -4,7 +4,8 @@
 
 .content_card {
     background-color: white;
-    width: 380px;
+    width: max-content;
+    max-width: 400px;
     height: auto;
     display: grid;
     justify-content: space-between;
