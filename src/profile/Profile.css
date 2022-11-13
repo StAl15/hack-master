@@ -98,9 +98,9 @@
     border-style: solid;
     border-color: #39B6EC;
     border-width: 5px;
-    padding: 50px;
-    width: 200px;
-    height: 200px;
+    padding: 30px;
+    width: 150px;
+    height: 150px;
 }
 
 .round_rating {
@@ -109,18 +109,14 @@
     display: grid;
     justify-content: center;
     text-align: center;
-    
-    
 }
 
-.round_rating div {
+.round_rating h1 {
     margin-bottom: -15px;
     font-size: 50px;
-    font-family: 'Inter-Medium';
 }
 
 .round_rating h4 {
-    font-family: 'Inter-Light';
+    font-family: 'Inter-Medium';
     font-size: 15px;
-    width: max-content;
 }
