@@ -1,7 +1,14 @@
 import React from 'react';
 import './ConsultantCard.css'
+import { Button } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
-const ConsultantCardItem = ({card, name, clients, rating, earning, img_src}) => {
+
+const ConsultantCardItem = ({ card, name, clients, rating, earning, img_src }) => {
+    let nav = useNavigate()
+    const handle_click = () => {
+        nav.navigate("/chat")
+    }
     return (
         <div>
             <div className='content_card'>
@@ -35,6 +42,16 @@ const ConsultantCardItem = ({card, name, clients, rating, earning, img_src}) => 
                     <h3 className="label">Средняя доходность</h3>
                     <h3 className="data">{earning}</h3>
                 </div>
+                <Button
+                    onClick={() => {
+                        handle_click()
+                    }}
+                    style={{ marginTop: 15, backgroundColor: "#39B6EC", marginLeft: 'auto', textTransform: "none" }}
+                    variant="contained"
+                    disableElevation
+                >
+                    Написать
+                </Button>
             </div>
 
 

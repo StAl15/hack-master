@@ -11,12 +11,13 @@ import { Header } from "./header/Header";
 
 
 function App() {
-  const {user} = useSelector((state)=>state.auth)
+  const { user } = useSelector((state) => state.auth)
+
   return (
-    
+    <Provider store={store}>
       <Router>
         {
-              user !== null ? <Header /> : null
+          user !== null ? <Header /> : null
         }
         <Routes>
           <Route path="/" element={<Login />} />
@@ -26,7 +27,7 @@ function App() {
           <Route path="/list_consultant" element={<ListConsultant />} />
         </Routes>
       </Router>
-    
+    </Provider>
   );
 }
 
