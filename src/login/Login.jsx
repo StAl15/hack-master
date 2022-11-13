@@ -64,18 +64,19 @@ const Login = () => {
           style={{ marginTop: 15 }}
         />
 
-        <Link to={'/notfound'}>Забыли пароль?</Link>
+        <Link style={{textDecoration:'none'}} to={'/notfound'}>Забыли пароль?</Link>
 
         <Button
           onClick={(e) => handlesumbit(e)}
-          style={{ marginTop: 15, backgroundColor: "#39B6EC" }}
+          style={{ marginTop: 15, backgroundColor: "#39B6EC", textTransform: 'none' }}
           variant="contained"
           disableElevation
         >
           Войти
         </Button>
-        
-        <p>Нет аккаунта? Создать бесплатно</p>
+
+        <Link style={{fontFamily:'Inter-Regular', textDecoration: 'none'}} to="/register"><span style={{color: 'black'}}>Нет аккаунта? </span>Создать бесплатно</Link>
+
       </div>
 
       <div className="login_right_side">

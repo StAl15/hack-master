@@ -3,6 +3,7 @@ import './Registration.css';
 import { TextField, Button, Checkbox, FormControlLabel } from "@mui/material"
 import hands from '../media/iPhone 12 Pro (Wooden Hands).svg'
 // import ico_sign from "../media/ico_sign.svg"
+import { Link } from "react-router-dom";
 
 const Registration = () => {
     const [checked, setChange] = useState(true)
@@ -32,7 +33,7 @@ const Registration = () => {
                 <Button style={{ textTransform: 'none', marginTop: 15, backgroundColor: "#39B6EC", }} variant="contained" disableElevation>
                     Создать
                 </Button>
-                <p>Есть аккаунт? Войти</p>
+                <Link style={{fontFamily:'Inter-Regular', textDecoration: 'none'}} to="/"><span style={{color: 'black'}}>Есть аккаунт? </span>Войти</Link>
 
             </div>
 
