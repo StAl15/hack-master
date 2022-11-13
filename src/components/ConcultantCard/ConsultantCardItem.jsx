@@ -3,9 +3,9 @@ import './ConsultantCard.css'
 
 const ConsultantCardItem = (card, index, name, quantity_clients, rating, earning, img_src) => {
     return (
-        <div className='content_card'>
-            
-            <div>
+        <div>
+            <div className='content_card'>
+
                 <div className="round_rating_">
                     <h3>Индекс доверия</h3>
                     <h1>A +</h1>
