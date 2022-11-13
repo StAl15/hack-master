@@ -1,14 +1,13 @@
 import React from "react";
 import "./Login.css";
+import hands from '../media/iPhone 12 Pro (Wooden Hands).svg'
 import { TextField, Button } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
-import hands from '../media/iPhone 12 Pro (Wooden Hands).svg'
-import { useDispatch } from "react-redux";
-import { setCredentials } from "../redux/slice/AuthSlice";
-
+import sha256 from 'crypto-js/sha256';
+import { useDispatch, useSelector } from "react-redux";
+import { fetchInfo, setCredentials } from "../redux/slice/AuthSlice";
 import axios from "axios";
 
-// import ico_sign from "../media/ico_sign.svg"
 
 const Login = () => {
   const userRef = React.useRef();
@@ -19,14 +18,13 @@ const Login = () => {
   const dispatch = useDispatch();
 
 
-  const bodyParameters = {
-    login: user,
-    password: password,
-  };
-
-
   const handlesumbit = async () => {
-
+    const hash = sha256(password).toString();
+    const bodyParameters = {
+      login: user,
+      password: hash,
+    };
+  
     try {
       const userData = await axios.post("https://hack.invest-open.ru/auth", bodyParameters)
       dispatch(setCredentials(userData.data));
@@ -64,24 +62,21 @@ const Login = () => {
           style={{ marginTop: 15 }}
         />
 
-        <Link style={{textDecoration:'none'}} to={'/notfound'}>Забыли пароль?</Link>
+        <Link to={'/notfound'}>Забыли пароль?</Link>
 
         <Button
           onClick={(e) => handlesumbit(e)}
-          style={{ marginTop: 15, backgroundColor: "#39B6EC", textTransform: 'none' }}
+          style={{ marginTop: 15, backgroundColor: "#39B6EC" }}
           variant="contained"
           disableElevation
         >
           Войти
         </Button>
-
-        <Link style={{fontFamily:'Inter-Regular', textDecoration: 'none'}} to="/register"><span style={{color: 'black'}}>Нет аккаунта? </span>Создать бесплатно</Link>
-
+        <p>Нет аккаунта? Создать бесплатно</p>
       </div>
 
       <div className="login_right_side">
-
-        <img style={{ width: 650, height: 650, position: 'absolute', bottom: 0, marginLeft: 'auto', left: '45%' }} src={hands} alt=""></img>
+      <img style={{ width: 650, height: 650, position: 'absolute', bottom: 0, marginLeft: 'auto', left: '45%' }} src={hands} alt=""></img>
       </div>
     </div>
   );
