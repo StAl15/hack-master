@@ -1,13 +1,20 @@
+* {
+    font-family: 'Inter-Light';
+}
+
 .content_card {
     background-color: white;
-    width: 300px;
+    width: max-content;
     height: auto;
     display: grid;
     justify-content: space-between;
     background-color: white;
     margin-bottom: 20px;
     margin-right: 20px;
-    padding: 10px;
+    padding: 20px;
+    border-radius: 15px;
+    border-style: none;
+    align-items: flex-start;
 
 }
 
@@ -15,16 +22,29 @@
     font-family: 'Inter-Bold';
     display: flex;
     align-items: center;
-    
+
 }
 
 .round_rating_ h1 {
-    font-size: 30px;
+    font-size: 25px;
     margin-left: auto;
 }
 
+.round_rating_ div {
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    border-style: solid;
+    border-color: #39B6EC;
+    align-self: center;
+    padding-bottom: 15px;
+    padding-left: 15px;
+    margin-left: auto;
+    
+}
+
 .round_rating_ h3 {
-    font-family: 'Inter-Regular';
+    font-family: 'Inter-Light';
     font-size: 15px;
     color: #5B667C;
 }
@@ -32,7 +52,7 @@
 .quantity_clients {
     display: flex;
     width: auto;
-    font-family: 'Inter-Regular';
+    font-family: 'Inter-Light';
     color: #5B667C;
     align-items: center;
 }
@@ -50,7 +70,7 @@
     display: flex;
     width: auto;
     align-items: center;
-    font-family: 'Inter-Regular';
+    font-family: 'Inter-Light';
     color: #5B667C;
 }
 
@@ -64,7 +84,7 @@
 }
 
 .earning {
-    font-family: 'Inter-Regular';
+    font-family: 'Inter-Light';
     color: #5B667C;
     display: flex;
     align-items: center;
@@ -78,4 +98,27 @@
 .earning h3.data {
     margin-left: auto;
     color: black;
+}
+
+.main_info_ img {
+    width: 100px;
+    height: 100px;
+    margin-right: 20px;
+}
+.main_info_ {
+    display: flex;
+    align-items: center;
+}
+
+.main_info_  div h4{
+    font-family: 'Inter-Light';
+    font-size: 20px;
+    color: #39B6EC;
+    margin-bottom: -15px;
+}
+
+.main_info_ div h1 {
+    font-size: 35px;
+    color: black;
+
 }
