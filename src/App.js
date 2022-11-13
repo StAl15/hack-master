@@ -11,7 +11,10 @@ import { Header } from "./header/Header";
 import { useEffect } from "react";
 
 function App() {
+
+  
   return (
+    
     <Provider store={store}>
       <Router>
         {
