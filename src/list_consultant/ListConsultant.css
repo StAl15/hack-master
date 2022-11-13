@@ -8,5 +8,7 @@
 
 .list_consultants {
     display: flex;
+    width: 100%;
+    height: auto;
 }
 

@@ -1,12 +1,13 @@
 .content_card {
     background-color: white;
-    width: max-content;
+    width: 300px;
     height: auto;
     display: grid;
     justify-content: space-between;
     background-color: white;
     margin-bottom: 20px;
     margin-right: 20px;
+    padding: 10px;
 
 }
 
@@ -19,7 +20,7 @@
 
 .round_rating_ h1 {
     font-size: 30px;
-    margin-left: 30px;
+    margin-left: auto;
 }
 
 .round_rating_ h3 {
@@ -33,6 +34,7 @@
     width: auto;
     font-family: 'Inter-Regular';
     color: #5B667C;
+    align-items: center;
 }
 
 .quantity_clients h3.data {
@@ -47,6 +49,7 @@
 .rating {
     display: flex;
     width: auto;
+    align-items: center;
     font-family: 'Inter-Regular';
     color: #5B667C;
 }
@@ -64,6 +67,7 @@
     font-family: 'Inter-Regular';
     color: #5B667C;
     display: flex;
+    align-items: center;
     width: auto;
 }
 
